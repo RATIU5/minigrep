@@ -11,27 +11,8 @@ fn main() {
         process::exit(1);
     });
 
-    println!("Searching for {}", config.query);
-    println!("In file {}", config.file_path);
-
     if let Err(e) = minigrep::run(config) {
         println!("Application error: {e}");
         process::exit(1);
     }
-}
-
-struct Config {
-    query: String,
-    file_path: String,
-}
-
-impl Config {
-    fn new(args: &[String]) -> Config {
-        if args.len() < 3 {
-            panic!("not enough arguments");
-        }
-        let query = args[1].clone();
-        let file_path = args[2].clone();
-
-    Config { query, file_path }
 }
